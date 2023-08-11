@@ -56,9 +56,13 @@ TEST(PrefetchTest, PrefetchToLocalCache_Nullptr) {
 }
 
 TEST(PrefetchTest, PrefetchToLocalCache_InvalidPtr) {
-  absl::PrefetchToLocalCache(reinterpret_cast<const void*>(0x785326532L));
-  absl::PrefetchToLocalCacheNta(reinterpret_cast<const void*>(0x785326532L));
-  absl::PrefetchToLocalCacheForWrite(reinterpret_cast<const void*>(0x78532L));
+  absl::PrefetchToLocalCache(reinterpret_cast<const void *>(0x785326532L));
+  absl::PrefetchToLocalCacheNta(reinterpret_cast<const void *>(0x785326532L));
+  absl::PrefetchToLocalCacheForWrite(reinterpret_cast<const void *>(0x78532L));
+}
+
+TEST(PrefetchTest, PrefetchMytest) {
+  absl::PrefetchToLocalCache(reinterpret_cast<const void *>(0x334983958L));
 }
 
 }  // namespace
