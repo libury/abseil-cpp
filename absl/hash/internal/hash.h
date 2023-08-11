@@ -1194,6 +1194,7 @@ inline uint64_t MixingHashState::CombineContiguousImpl(
   return Mix(state, v);
 }
 
+// This is base on xxhash, and lowwer level is a opt select for hash function
 // Overload of MixingHashState::CombineContiguousImpl()
 inline uint64_t MixingHashState::CombineContiguousImpl(
     uint64_t state, const unsigned char* first, size_t len,
@@ -1207,6 +1208,7 @@ inline uint64_t MixingHashState::CombineContiguousImpl(
     }
     v = Hash64(first, len);
   } else if (len > 8) {
+    // TODO: check is vaild
     // This hash function was constructed by the ML-driven algorithm discovery
     // using reinforcement learning. We fed the agent lots of inputs from
     // microbenchmarks, SMHasher, low hamming distance from generated inputs and
